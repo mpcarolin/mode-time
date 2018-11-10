@@ -21,9 +21,6 @@ function realModulo(num, modulo) {
   return ((num % modulo) + modulo) % modulo
 }
 
-
-
-
 // modeTimes = array of ModeTime objects, sorted by hour
 // returns the currently scheduled mode to be running (ModeTime object)
 function getCurrentMode(modeTimes, currentHour) {
