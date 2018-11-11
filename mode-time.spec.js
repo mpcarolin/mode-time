@@ -45,10 +45,17 @@ describe('ModeTimes', () => {
 
 	test('ModeTimes.remove() removes mode time from collection', () => {
 		let name = 'foo'
+
 		times.add(name, 3)
 		expect(times.contains(name)).toEqual(true)
+		expect(times.length).toEqual(1)
+
 		times.remove(name)
 		expect(times.contains(name)).toEqual(false)
+		expect(times.length).toEqual(0)
+
+		times.remove(name)
+		expect(times.length).toEqual(0)
 	})
 
 	test('ModeTimes.getAll() returns a sorted array of ModeTimes', () => {

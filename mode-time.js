@@ -29,7 +29,7 @@ class ModeTimes {
 	}
 
 	remove (modeName) {
-		if (!this.times.hasOwnProperty(modeName)) return
+		if (this.times[modeName] == null) return	
 		this.times[modeName] = null
 		this.length--
 	}
