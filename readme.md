@@ -1,3 +1,4 @@
+[![npm version](https://badge.fury.io/js/mode-time.svg)](https://badge.fury.io/js/mode-time)
 ## Description
 
 ModeTime is a simple JavaScript library for scheduling application modes to run across various time ranges.
