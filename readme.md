@@ -25,10 +25,10 @@ times.add('sepia-theme', 23) // a sepia theme mode, scheduled for 11pm
 * Accepted hours must range between 0 and 23, inclusive
 * ModeTimes also has methods for removing modes, checking if a mode exists in the collection, and more. See the class def in mode-times.js
 
-#### Finally, pass your ModeTimes object and the current hour of the day to the getCurrentMode method to determine which mode to switch to:
+#### Finally, pass your ModeTimes object and the hour of the day to the getCurrentMode method to determine which mode to switch to:
 
 ```
-let mode = getCurrentModes(times, 12)
+let mode = getCurrentMode(times, 12)
 // returns { 'name': 'light-theme', 'hour': 7 }
 ```
 
