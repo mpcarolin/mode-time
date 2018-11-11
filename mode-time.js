@@ -19,19 +19,31 @@ class ModeTime {
 class ModeTimes {
 	constructor () {
 		this.times = {}
-		this.length = 0
 	}
 
-	add (modeName, scheduledHour) {
+	get length () {
+		let length = 0
+		for (let key in this.times) {
+			if (this.times[key]) {
+				length++
+			}
+		}
+		return length
+	}
+
+	// use this if you want to directly add a modeTime
+	putModeTime (modeTime) {
+		this.times[modeTime.name] = modeTime
+	}
+
+	// easiest way to add a mode and its time. ModeName should be unique.
+	put (modeName, scheduledHour) {
 		let modeTime = new ModeTime(modeName, scheduledHour)	
-		this.times[modeName] = modeTime
-		this.length++
+		this.putModeTime(modeTime)
 	}
 
 	remove (modeName) {
-		if (this.times[modeName] == null) return	
 		this.times[modeName] = null
-		this.length--
 	}
 
 	get (modeName) {

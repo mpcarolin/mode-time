@@ -37,16 +37,39 @@ describe('ModeTimes', () => {
 		expect(times.times).toEqual({})
 	})
 
-	test('ModeTimes.add() adds new mode time to the collection', () => {
+	test('put() adds a new mode time to the collection', () => {
 		let name = 'foo'
-		times.add(name, 3)
+		times.put(name, 3)
 		expect(times.contains(name)).toEqual(true)
 	})
 
-	test('ModeTimes.remove() removes mode time from collection', () => {
+	test('put() overwrites existing mode time', () => {
+		let name = 'foo'
+		times.put(name, 3)
+		expect(times.contains(name)).toEqual(true)
+		expect(times.length).toEqual(1)
+
+		times.put(name, 4)
+		expect(times.get(name).hour).toEqual(4)
+		expect(times.length).toEqual(1)
+	})
+
+	test('putModeTime() adds a mode time directly', () => {
+		let mt = new ModeTime('foo', 3)	
+		times.putModeTime(mt)
+		expect(times.contains('foo')).toEqual(true)
+	})
+
+	test('names() returns a list of the keys', () => {
+		expect(times.names()).toEqual([])
+		times.put('foo', 4)
+		expect(times.names()).toContainEqual('foo')
+	})
+
+	test('remove() removes mode time from collection', () => {
 		let name = 'foo'
 
-		times.add(name, 3)
+		times.put(name, 3)
 		expect(times.contains(name)).toEqual(true)
 		expect(times.length).toEqual(1)
 
@@ -58,10 +81,15 @@ describe('ModeTimes', () => {
 		expect(times.length).toEqual(0)
 	})
 
-	test('ModeTimes.getAll() returns a sorted array of ModeTimes', () => {
-		times.add('foo', 5)
-		times.add('bar', 3)
-		times.add('boo', 23)
+	test('remove() does nothing when passed a key that was never puted', () => {
+		times.remove('a key that does not exist')
+		expect(times.length).toEqual(0)
+	})
+
+	test('getAll() returns a sorted array of ModeTimes', () => {
+		times.put('foo', 5)
+		times.put('bar', 3)
+		times.put('boo', 23)
 
 		let sorted = times.getAll()
 		expect(sorted.length).toEqual(3)
@@ -70,14 +98,14 @@ describe('ModeTimes', () => {
 
 	})
 
-	describe('getModeByHour', () => {
+	describe('getModeByHour()', () => {
 		let modeTimes;
 		beforeEach(() => {
 			modeTimes = new ModeTimes()
-			modeTimes.add('foo', 3)
-			modeTimes.add('mario', 7)
-			modeTimes.add('luigi', 12)
-			modeTimes.add('bar', 21)
+			modeTimes.put('foo', 3)
+			modeTimes.put('mario', 7)
+			modeTimes.put('luigi', 12)
+			modeTimes.put('bar', 21)
 		})
 
 		test('it rejects empty mode times', () => {
@@ -105,7 +133,7 @@ describe('ModeTimes', () => {
 
 		test('it works with a single mode', () => {
 			let times = new ModeTimes()
-			times.add('bar', 20)
+			times.put('bar', 20)
 			expect(times.getModeByHour(9).name).toEqual('bar')
 			expect(times.getModeByHour(21).name).toEqual('bar')
 		})
