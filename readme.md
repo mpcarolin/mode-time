@@ -1,5 +1,5 @@
 [![npm version](https://badge.fury.io/js/mode-time.svg)](https://badge.fury.io/js/mode-time)
-## mode-time
+# mode-time
 
 **A simple JavaScript library for scheduling application modes to run across various time ranges.**
 
