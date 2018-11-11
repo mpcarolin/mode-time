@@ -102,6 +102,13 @@ describe('ModeTimes', () => {
 			let mode = modeTimes.getModeByHour(1)		
 			expect(mode.name).toEqual('bar')
 		})
+
+		test('it works with a single mode', () => {
+			let times = new ModeTimes()
+			times.add('bar', 20)
+			expect(times.getModeByHour(9).name).toEqual('bar')
+			expect(times.getModeByHour(21).name).toEqual('bar')
+		})
 	})
 })
 

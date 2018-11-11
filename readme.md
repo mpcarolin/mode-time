@@ -1,4 +1,4 @@
-## A simple javascript library for defining scheduled modes to switch at various times.
+## A simple JavaScript library for scheduling application modes to run during various time ranges.
 
 ### Usage
 
@@ -8,7 +8,7 @@
 const { ModeTimes } = require('mode-time')
 ```
 
-#### To manage various modes and their times, first make a ModeTimes object
+#### To manage various modes and their times, first instantiate a ModeTimes object
 
 ```
 const times = new ModeTimes()
@@ -32,6 +32,9 @@ let mode = times.getModeByHour(12)
 // returns { 'name': 'light-theme', 'hour': 7 }
 ```
 
+#### Example use case
+
+Whenever an application stipulates certain modes to run across specific time ranges, this can be helpful. I use this for a Chrome extension to switch between colored themes depending on the time of day.
 
 
 
