@@ -18,7 +18,7 @@ const times = new ModeTimes()
 
 ```
 times.add('light-theme', 7)  // a light theme mode, scheduled for 7am
-times.add('dark-theme', 13)  // a dark theme mode, schedules for 1pm
+times.add('dark-theme', 13)  // a dark theme mode, scheduled for 1pm
 times.add('sepia-theme', 23) // a sepia theme mode, scheduled for 11pm
 ```
 
