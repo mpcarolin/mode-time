@@ -1,4 +1,6 @@
-## A simple JavaScript library for scheduling application modes to run during various time ranges.
+## Description
+
+ModeTime is a simple JavaScript library for scheduling application modes to run during various time ranges.
 
 ### Usage
 
