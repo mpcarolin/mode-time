@@ -52,6 +52,27 @@ class ModeTimes {
 			.filter(modeTime => modeTime) // remove nulls
 			.sort((a, b) => a.compareTo(b))
 	}
+
+	// returns the scheduled mode to be running at the specified hour (ModeTime object)
+	getModeByHour (hour) {
+		ModeTime.checkHour(hour)
+		if (this.length == 0) {
+			throw new Error("Cannot get current mode using an empty ModeTimes collection.")
+		}
+
+		let sortedTimes = this.getAll()
+
+	    for (var i = 0; i < sortedTimes.length; i++) {
+	      let modeTime = sortedTimes[i]
+	      if (modeTime.hour > hour) {
+	      	const prev = realModulo(i - 1, sortedTimes.length)
+	      	return sortedTimes[prev]
+	      }
+	    }
+
+		// if we do not find any mode with an hour greater than the currentHour, use the last value with the latest hour
+	    return sortedTimes[sortedTimes.length - 1] 
+	}
 }
 
 // modulo function that accounts for negative values
@@ -59,28 +80,7 @@ function realModulo (num, modulo) {
   return ((num % modulo) + modulo) % modulo
 }
 
-// modeTimes = array of ModeTime objects, sorted by hour
-// returns the currently scheduled mode to be running (ModeTime object)
-function getCurrentMode (modeTimes, currentHour) {
-	ModeTime.checkHour(currentHour)
-	if (modeTimes.length == 0) {
-		throw new Error("Cannot get current mode using an empty modeTimes array.")
-	}
-
-	let sortedTimes = modeTimes.getAll()
-
-    for (var i = 0; i < sortedTimes.length; i++) {
-      let modeTime = sortedTimes[i]
-      if (modeTime.hour > currentHour) {
-      	const prev = realModulo(i - 1, sortedTimes.length)
-      	return sortedTimes[prev]
-      }
-    }
-
-	// if we do not find any mode with an hour greater than the currentHour, use the last value with the latest hour
-    return sortedTimes[sortedTimes.length - 1] 
-}
 
 module.exports = {
-	ModeTime, ModeTimes, getCurrentMode
+	ModeTime, ModeTimes
 }

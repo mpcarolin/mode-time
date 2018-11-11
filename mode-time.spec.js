@@ -1,4 +1,4 @@
-const { ModeTime, ModeTimes, getCurrentMode } = require('./mode-time')
+const { ModeTime, ModeTimes } = require('./mode-time')
 
 /* ModeTime */
 describe('ModeTime', () => {
@@ -67,39 +67,41 @@ describe('ModeTimes', () => {
 		expect(sorted.length).toEqual(3)
 		expect(sorted[1].hour).toBeGreaterThan(sorted[0].hour)
 		expect(sorted[2].hour).toBeGreaterThan(sorted[1].hour)
+
+	})
+
+	describe('getModeByHour', () => {
+		let modeTimes;
+		beforeEach(() => {
+			modeTimes = new ModeTimes()
+			modeTimes.add('foo', 3)
+			modeTimes.add('mario', 7)
+			modeTimes.add('luigi', 12)
+			modeTimes.add('bar', 21)
+		})
+
+		test('it rejects empty mode times', () => {
+			expect(() => new ModeTimes().getModeByHour(3)).toThrow()	
+		})
+
+		test('it rejects hours out of range', () => {
+			expect(() => modeTimes.getModeByHour(-1)).toThrow()
+		})
+
+		test('it finds the right mode for an hour in the middle', () => {
+			let mode = modeTimes.getModeByHour(9)
+			expect(mode.name).toEqual('mario')
+		})
+
+		test('it finds the right mode when the hour is greater than all modes in the collection', () => {
+			let mode = modeTimes.getModeByHour(23)
+			expect(mode.name).toEqual('bar')
+		})
+
+		test('it finds the right mode when the hour is less than all the modes', () => {
+			let mode = modeTimes.getModeByHour(1)		
+			expect(mode.name).toEqual('bar')
+		})
 	})
 })
 
-describe('getCurrentMode', () => {
-	let modeTimes;
-	beforeEach(() => {
-		modeTimes = new ModeTimes()
-		modeTimes.add('foo', 3)
-		modeTimes.add('mario', 7)
-		modeTimes.add('luigi', 12)
-		modeTimes.add('bar', 21)
-	})
-
-	test('it rejects empty mode times', () => {
-		expect(() => getCurrentMode(new ModeTimes(), 3)).toThrow()	
-	})
-
-	test('it rejects hours out of range', () => {
-		expect(() => getCurrentMode(modeTimes, -1)).toThrow()
-	})
-
-	test('it finds the right mode for an hour in the middle', () => {
-		let mode = getCurrentMode(modeTimes, 9)
-		expect(mode.name).toEqual('mario')
-	})
-
-	test('it finds the right mode when the hour is greater than all modes in the collection', () => {
-		let mode = getCurrentMode(modeTimes, 23)
-		expect(mode.name).toEqual('bar')
-	})
-
-	test('it finds the right mode when the hour is less than all the modes', () => {
-		let mode = getCurrentMode(modeTimes, 1)		
-		expect(mode.name).toEqual('bar')
-	})
-})
