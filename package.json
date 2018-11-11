@@ -1,8 +1,10 @@
 {
   "name": "mode-time",
   "version": "1.0.0",
-  "author": "Michael Carolin",
+  "author": "mpcarolin",
   "description": "Micro library for managing hour-scheduled modes for any javascript app",
+  "keywords": ["schedule", "modes", "themes", "hours", "alarms"],
+  "main": "mode-time.js",
   "scripts": {
     "test": "jest"
   },
@@ -12,5 +14,10 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/mpcarolin/mode-time.git"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/mpcarolin/mode-time/issues"
+  },
+  "homepage": "https://github.com/mpcarolin/mode-time.git",
+  "license": "MIT"
 }
