@@ -14,6 +14,10 @@ class ModeTime {
 			throw new Error('Hour must be an integer between 0 and 23, inclusive.')
 		}
 	}
+
+	toString () {
+		return 'ModeTime [name: ' + this.name + ', hour: ' + this.hour + ']'
+	}
 }
 
 class ModeTimes {
@@ -84,6 +88,13 @@ class ModeTimes {
 
 		// if we do not find any mode with an hour greater than the currentHour, use the last value with the latest hour
 	    return sortedTimes[sortedTimes.length - 1] 
+	}
+
+	toString () {
+		let allTimes = this.getAll()	
+		let start = "ModeTimes [ "
+		const reducer = (acc, mt) => acc + "\n\t" + mt.toString()
+		return start + allTimes.reduce(reducer, "") + "\n]"
 	}
 }
 

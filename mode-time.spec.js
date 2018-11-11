@@ -23,6 +23,11 @@ describe('ModeTime', () => {
 		let timeC = new ModeTime('bar', 3)
 		expect(timeC.compareTo(timeA)).toEqual(0)
 	})
+
+	test('toString()', () => {
+		let time = new ModeTime('foo', 3)
+		expect(time.toString()).toEqual(expect.stringContaining('foo'))
+	})
 })
 
 /* ModeTimes */
@@ -96,6 +101,13 @@ describe('ModeTimes', () => {
 		expect(sorted[1].hour).toBeGreaterThan(sorted[0].hour)
 		expect(sorted[2].hour).toBeGreaterThan(sorted[1].hour)
 
+	})
+
+	test('toString() returns a valid string', () => {
+		times.put('foo', 5)
+		times.put('bar', 3)
+		times.put('boo', 23)
+		expect(times.toString()).toEqual(expect.stringContaining('foo'))
 	})
 
 	describe('getModeByHour()', () => {
