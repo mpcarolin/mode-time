@@ -55,13 +55,13 @@ class ModeTimes {
 }
 
 // modulo function that accounts for negative values
-function realModulo(num, modulo) {
+function realModulo (num, modulo) {
   return ((num % modulo) + modulo) % modulo
 }
 
 // modeTimes = array of ModeTime objects, sorted by hour
 // returns the currently scheduled mode to be running (ModeTime object)
-function getCurrentMode(modeTimes, currentHour) {
+function getCurrentMode (modeTimes, currentHour) {
 	ModeTime.checkHour(currentHour)
 	if (modeTimes.length == 0) {
 		throw new Error("Cannot get current mode using an empty modeTimes array.")
