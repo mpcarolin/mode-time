@@ -2,7 +2,7 @@
 
 ModeTime is a simple JavaScript library for scheduling application modes to run during various time ranges.
 
-### Usage
+## Usage
 
 #### To import, use require:
 
