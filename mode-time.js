@@ -62,8 +62,10 @@ function realModulo(num, modulo) {
 // modeTimes = array of ModeTime objects, sorted by hour
 // returns the currently scheduled mode to be running (ModeTime object)
 function getCurrentMode(modeTimes, currentHour) {
-	if (modeTimes.length == 0) throw new Error("Cannot get current mode using an empty modeTimes array.")
 	ModeTime.checkHour(currentHour)
+	if (modeTimes.length == 0) {
+		throw new Error("Cannot get current mode using an empty modeTimes array.")
+	}
 
 	let sortedTimes = modeTimes.getAll()
 
