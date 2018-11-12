@@ -1,6 +1,6 @@
 {
   "name": "mode-time",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "mpcarolin",
   "description": "Micro library for managing hour-scheduled modes for any javascript app",
   "keywords": [
