@@ -1,22 +1,39 @@
 class ModeTime {
-	constructor (name, hour) {
+	constructor (name, time) {
 		ModeTime.checkHour(hour)
 		this.name = name	
-		this.hour = hour
+		if (typeof time === Number) {
+			this.time = { "hours": time, "minutes": 0.0	}
+		} else {
+			this.time = time
+		}
 	}	
 
-	compareTo (otherMode) {
-		return (this.hour - otherMode.hour)
+	get hours () {
+		return this.time.hours
 	}
 
-	static checkHour (hour) {
-		if (hour < 0 || hour > 23) {
+	get minutes () {
+		return this.time.minutes	
+	}
+
+	compareTo (otherMode) {
+		let hourDiff = (this.time.hours - otherMode.time.hours)
+		let minuteDiff = (this.time.minutes - otherMode.time.minutes)
+		return (hourDiff === 0) ? minuteDiff : hourDiff
+	}
+
+	static checkTime (time) {
+		if (time.hours < 0 || time.hours > 23) {
 			throw new Error('Hour must be an integer between 0 and 23, inclusive.')
+		}
+		if (time.minutes < 0 || time.minutes > 59) {
+			throw new Error('Minute must be integer between 0 and 59, inclusive.')
 		}
 	}
 
 	toString () {
-		return 'ModeTime [name: ' + this.name + ', hour: ' + this.hour + ']'
+		return 'ModeTime [name: ' + this.name + ', hour: ' + this.time.hours + ', minutes: ' +  this.time.minutes + ']'
 	}
 }
 
@@ -70,8 +87,13 @@ class ModeTimes {
 	}
 
 	// returns the scheduled mode to be running at the specified hour (ModeTime object)
-	getModeByHour (hour) {
-		ModeTime.checkHour(hour)
+	getModeByTime (t) {
+		let time = t
+		if (typeof time === Number) {
+			time = { "hours": t, "minutes": 0.0 }
+		}
+
+		ModeTime.checkTime(time)
 		if (this.length == 0) {
 			throw new Error("Cannot get current mode using an empty ModeTimes collection.")
 		}
@@ -80,7 +102,7 @@ class ModeTimes {
 
 	    for (var i = 0; i < sortedTimes.length; i++) {
 	      let modeTime = sortedTimes[i]
-	      if (modeTime.hour > hour) {
+	      if (modeTime.time > hour) {
 	      	const prev = realModulo(i - 1, sortedTimes.length)
 	      	return sortedTimes[prev]
 	      }

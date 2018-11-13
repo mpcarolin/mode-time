@@ -1,0 +1,525 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"light",
+				"lightHour"
+			],
+			[
+				"hour",
+				"hourString"
+			],
+			[
+				"cons",
+				"constructOptions"
+			],
+			[
+				"pokemon",
+				"pokemon_response"
+			],
+			[
+				"write",
+				"writeInsertStatementsForPokemonTypesTableToFile"
+			],
+			[
+				"full_",
+				"full_sql_script"
+			],
+			[
+				"language",
+				"language_types"
+			],
+			[
+				"lan",
+				"language_types"
+			],
+			[
+				"requ",
+				"request_method"
+			],
+			[
+				"flask",
+				"flask_request"
+			],
+			[
+				"url",
+				"url_params"
+			],
+			[
+				"reque",
+				"request_handlers"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "mode-time.js",
+			"settings":
+			{
+				"buffer_size": 2393,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "mode-time.spec.js",
+			"settings":
+			{
+				"buffer_size": 4107,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"repl",
+				"SublimeREPL: Python"
+			],
+			[
+				"git status",
+				"Git: Status"
+			],
+			[
+				"flow",
+				"Git-flow: Feature Start From Commit"
+			],
+			[
+				"replpython",
+				"SublimeREPL: Python"
+			],
+			[
+				"package install",
+				"Package Control: Install Package"
+			],
+			[
+				"snippet: tra",
+				"Snippet: Try/Except/Finally"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
+				"Terminal",
+				"Terminal: Open in project folder"
+			],
+			[
+				"Git: Status",
+				"Git: Status"
+			]
+		],
+		"width": 492.0
+	},
+	"console":
+	{
+		"height": 275.0,
+		"history":
+		[
+			"exit()",
+			"clear",
+			"exit()",
+			"clear",
+			".exit",
+			"exit()",
+			"exit",
+			"ls",
+			"os.listdir('.')",
+			"import os",
+			"a + 5",
+			"a = 5",
+			"clear"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": true,
+		"side_bar_visible": false,
+		"status_bar_visible": true
+	},
+	"expanded_folders":
+	[
+		"/Users/mpcarolin/Source/mode-time"
+	],
+	"file_history":
+	[
+		"/Users/mpcarolin/Source/mode-time/.gitignore",
+		"/Users/mpcarolin/Source/chrome-extensions/reader-view/node_modules/mode-time/mode-time.js",
+		"/Users/mpcarolin/Desktop/todo.md",
+		"/Users/mpcarolin/Javascript/chrome-extensions/reader-view/WebExtension/common.js",
+		"/Users/mpcarolin/Javascript/chrome-extensions/reader-view/WebExtension/data/options/index.js",
+		"/Users/mpcarolin/Javascript/chrome-extensions/reader-view/WebExtension/config.js",
+		"/Users/mpcarolin/Javascript/chrome-extensions/learn/manifest.json",
+		"/Users/mpcarolin/Javascript/chrome-extensions/reader-view/WebExtension/manifest.json",
+		"/Users/mpcarolin/Javascript/chrome-extensions/reader-view/WebExtension/data/options/index.html",
+		"/Users/mpcarolin/Javascript/chrome-extensions/reader-view/WebExtension/data/options/matched.js",
+		"/Users/mpcarolin/Javascript/chrome-extensions/reader-view/Firefox-only/data/options/index.html",
+		"/Users/mpcarolin/Javascript/chrome-extensions/learn/background.js",
+		"/Users/mpcarolin/Javascript/chrome-extensions/learn/popup.js",
+		"/Users/mpcarolin/Javascript/chrome-extensions/learn/options.html",
+		"/Users/mpcarolin/Javascript/chrome-extensions/learn/options.js",
+		"/Users/mpcarolin/Javascript/chrome-extensions/learn/popup.html",
+		"/Users/mpcarolin/CreateDB.sql",
+		"/Users/mpcarolin/Python/pokeflex/endpoints.json",
+		"/Users/mpcarolin/Python/pokeflex/constants.py",
+		"/Users/mpcarolin/Python/pokeflex/main.py",
+		"/Users/mpcarolin/Python/pokeflex/config.ini",
+		"/Users/mpcarolin/Python/pokeflex/mapping.py",
+		"/Users/mpcarolin/Python/pokeflex/api.py",
+		"/Users/mpcarolin/Python/pokeflex/PokeFlex_cache.sqlite",
+		"/Users/mpcarolin/Python/pokeflex/pokeapi_mapper.py",
+		"/Users/mpcarolin/Python/pokeflex/sample_mapper.py",
+		"/Users/mpcarolin/Python/pokeflex/sample.py",
+		"/Users/mpcarolin/Python/pokeflex/sql_util.py",
+		"/Users/mpcarolin/Python/pokeflex/test.py",
+		"/Users/mpcarolin/Python/pokeflex/.gitignore",
+		"/Users/mpcarolin/Downloads/endpoints.json"
+	],
+	"find":
+	{
+		"height": 24.0
+	},
+	"find_in_files":
+	{
+		"height": 102.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "mode-time.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2393,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2369,
+								2369
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false,
+							"vintage":
+							{
+								"_vintageous_glue_until_normal_mode": false,
+								"action": null,
+								"action_count": "",
+								"mode": "mode_normal",
+								"motion": null,
+								"motion_count": "",
+								"must_capture_register_name": false,
+								"normal_insert_count": "1",
+								"partial_sequence": "",
+								"register": "\"",
+								"sequence": "",
+								"xpos": 17
+							}
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "mode-time.spec.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4107,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2926,
+								2926
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false,
+							"vintage":
+							{
+								"_vintageous_glue_until_normal_mode": false,
+								"action": null,
+								"action_count": "",
+								"mode": "mode_normal",
+								"motion": null,
+								"motion_count": "",
+								"must_capture_register_name": false,
+								"normal_insert_count": "1",
+								"partial_sequence": "",
+								"register": "\"",
+								"sequence": "",
+								"xpos": 0
+							}
+						},
+						"translation.x": 0.0,
+						"translation.y": 973.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 24.0
+	},
+	"input":
+	{
+		"height": 39.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.git-flow-feature-start":
+	{
+		"height": 97.0
+	},
+	"pinned_build_system": "",
+	"project": "mode-time.sublime-project",
+	"replace":
+	{
+		"height": 44.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"mode-time",
+				"mode-time.js"
+			],
+			[
+				".gi",
+				".gitignore"
+			],
+			[
+				"mode-tim",
+				"node_modules/mode-time/mode-time.js"
+			],
+			[
+				"common",
+				"reader-view/WebExtension/common.js"
+			],
+			[
+				"options",
+				"reader-view/Firefox-only/data/options/index.html"
+			],
+			[
+				"ma",
+				"learn/manifest.json"
+			],
+			[
+				"ap",
+				"api.py"
+			],
+			[
+				"con",
+				"constants.py"
+			],
+			[
+				"tes",
+				"test.py"
+			],
+			[
+				"main",
+				"main.py"
+			],
+			[
+				"test",
+				"test.py"
+			],
+			[
+				"confi",
+				"config.ini"
+			],
+			[
+				"const",
+				"constants.py"
+			],
+			[
+				"sql",
+				"sql_util.py"
+			],
+			[
+				"sampl",
+				"sample.py"
+			],
+			[
+				"mapp",
+				"mapping.py"
+			],
+			[
+				"endpo",
+				"endpoints.json"
+			],
+			[
+				"api",
+				"api.py"
+			],
+			[
+				"constan",
+				"constants.py"
+			],
+			[
+				"sam",
+				"sample.py"
+			],
+			[
+				"config.ini",
+				"config.ini"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "read",
+		"selected_items":
+		[
+			[
+				"read",
+				"~/Source/chrome-extensions/reader-view.sublime-project"
+			],
+			[
+				"re",
+				"~/Source/chrome-extensions/reader-view.sublime-project"
+			],
+			[
+				"reader",
+				"~/Source/chrome-extensions/reader-view.sublime-project"
+			],
+			[
+				"",
+				"~/Javascript/pokedex.sublime-project"
+			],
+			[
+				"poked",
+				"~/Javascript/pokedex.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+		"_vintageous_last_char_search_command": "vi_f",
+		"_vintageous_last_character_search": ",",
+		"_vintageous_reset_during_init": true,
+		"vintage":
+		{
+		}
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 217.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
