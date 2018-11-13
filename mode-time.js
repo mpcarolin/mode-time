@@ -1,12 +1,37 @@
-class ModeTime {
-	constructor (name, time) {
-		ModeTime.checkHour(hour)
-		this.name = name	
-		if (typeof time === Number) {
-			this.time = { "hours": time, "minutes": 0.0	}
-		} else {
-			this.time = time
+class SimpleTime {
+	// hours: 24 hour time notation values 0 - 23 inclusive
+	// minutes: integers 0 - 59 inclusive
+	constructor (hours, minutes) {
+		this.hours = hours	
+		this.minutes = minutes || 0
+		SimpleTime.checkTime(this)
+	}	
+
+	compareTo (other) {
+		let hourDiff = (this.hours - other.hours)
+		let minuteDiff = (this.minutes - other.minutes)
+		return (hourDiff === 0) ? minuteDiff : hourDiff
+	}
+
+	static compare(st, st2) {
+		return st.compareTo(st2)
+	}
+
+	static checkTime (time) {
+		if (time.hours < 0 || time.hours > 23) {
+			throw new Error('Hour must be an integer between 0 and 23, inclusive.')
 		}
+		if (time.minutes < 0 || time.minutes > 59) {
+			throw new Error('Minute must be integer between 0 and 59, inclusive.')
+		}
+	}
+}
+
+class ModeTime {
+	// minutes are optional: if ommitted, it will use 00 for minutes.
+	constructor (name, hours, minutes) {
+		this.time = new SimpleTime(hours, minutes)
+		this.name = name	
 	}	
 
 	get hours () {
@@ -18,22 +43,12 @@ class ModeTime {
 	}
 
 	compareTo (otherMode) {
-		let hourDiff = (this.time.hours - otherMode.time.hours)
-		let minuteDiff = (this.time.minutes - otherMode.time.minutes)
-		return (hourDiff === 0) ? minuteDiff : hourDiff
+		return this.time.compareTo(otherMode.time)
 	}
 
-	static checkTime (time) {
-		if (time.hours < 0 || time.hours > 23) {
-			throw new Error('Hour must be an integer between 0 and 23, inclusive.')
-		}
-		if (time.minutes < 0 || time.minutes > 59) {
-			throw new Error('Minute must be integer between 0 and 59, inclusive.')
-		}
-	}
 
 	toString () {
-		return 'ModeTime [name: ' + this.name + ', hour: ' + this.time.hours + ', minutes: ' +  this.time.minutes + ']'
+		return `ModeTime [name: ${this.name}, hour: ${this.hours}, minutes: ${this.minutes}]`
 	}
 }
 
@@ -58,8 +73,8 @@ class ModeTimes {
 	}
 
 	// easiest way to add a mode and its time. ModeName should be unique.
-	put (modeName, scheduledHour) {
-		let modeTime = new ModeTime(modeName, scheduledHour)	
+	put (modeName, scheduledHour, scheduledMinutes) {
+		let modeTime = new ModeTime(modeName, scheduledHour, scheduledMinutes)	
 		this.putModeTime(modeTime)
 	}
 
@@ -87,36 +102,30 @@ class ModeTimes {
 	}
 
 	// returns the scheduled mode to be running at the specified hour (ModeTime object)
-	getModeByTime (t) {
-		let time = t
-		if (typeof time === Number) {
-			time = { "hours": t, "minutes": 0.0 }
-		}
-
-		ModeTime.checkTime(time)
+	getModeByTime (hour, minutes) {
+		let time = new SimpleTime(hour, minutes)
 		if (this.length == 0) {
 			throw new Error("Cannot get current mode using an empty ModeTimes collection.")
 		}
 
-		let sortedTimes = this.getAll()
+		let sortedModeTimes = this.getAll()
 
-	    for (var i = 0; i < sortedTimes.length; i++) {
-	      let modeTime = sortedTimes[i]
-	      if (modeTime.time > hour) {
-	      	const prev = realModulo(i - 1, sortedTimes.length)
-	      	return sortedTimes[prev]
+	    for (let i = 0; i < sortedModeTimes.length; i++) {
+	      let next = sortedModeTimes[i].time
+	      if (SimpleTime.compare(next, time) > 0) {
+	      	const prev = realModulo(i - 1, sortedModeTimes.length)
+	      	return sortedModeTimes[prev]
 	      }
 	    }
 
 		// if we do not find any mode with an hour greater than the currentHour, use the last value with the latest hour
-	    return sortedTimes[sortedTimes.length - 1] 
+	    return sortedModeTimes[sortedModeTimes.length - 1] 
 	}
 
 	toString () {
 		let allTimes = this.getAll()	
-		let start = "ModeTimes [ "
 		const reducer = (acc, mt) => acc + "\n\t" + mt.toString()
-		return start + allTimes.reduce(reducer, "") + "\n]"
+		return "ModeTimes [ " + allTimes.reduce(reducer, "") + "\n]"
 	}
 }
 
@@ -127,5 +136,5 @@ function realModulo (num, modulo) {
 
 
 module.exports = {
-	ModeTime, ModeTimes
+	SimpleTime, ModeTime, ModeTimes
 }
