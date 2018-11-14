@@ -1,16 +1,20 @@
 class SimpleTime {
 	// hours: 24 hour time notation values 0 - 23 inclusive
 	// minutes: integers 0 - 59 inclusive
-	constructor (hours, minutes) {
+	constructor (hours, minutes, seconds) {
 		this.hours = hours	
 		this.minutes = minutes || 0
+		this.seconds = seconds || 0
 		SimpleTime.checkTime(this)
 	}	
 
 	compareTo (other) {
 		let hourDiff = (this.hours - other.hours)
 		let minuteDiff = (this.minutes - other.minutes)
-		return (hourDiff === 0) ? minuteDiff : hourDiff
+		let secondsDiff = (this.seconds - other.seconds)
+		if (hourDiff !== 0) return hourDiff
+		if (minuteDiff !== 0) return minuteDiff
+		return secondsDiff
 	}
 
 	static compare(st, st2) {
@@ -24,13 +28,16 @@ class SimpleTime {
 		if (time.minutes < 0 || time.minutes > 59) {
 			throw new Error('Minute must be integer between 0 and 59, inclusive.')
 		}
+		if (time.seconds < 0 || time.seconds > 59) {
+			throw new Error('Seconds must be integer between 0 and 59, inclusive.')
+		}
 	}
 }
 
 class ModeTime {
 	// minutes are optional: if ommitted, it will use 00 for minutes.
-	constructor (name, hours, minutes) {
-		this.time = new SimpleTime(hours, minutes)
+	constructor (name, hours, minutes, seconds) {
+		this.time = new SimpleTime(hours, minutes, seconds)
 		this.name = name	
 	}	
 
@@ -42,13 +49,17 @@ class ModeTime {
 		return this.time.minutes	
 	}
 
+	get seconds () {
+		return this.time.seconds
+	}
+
 	compareTo (otherMode) {
 		return this.time.compareTo(otherMode.time)
 	}
 
 
 	toString () {
-		return `ModeTime [name: ${this.name}, hour: ${this.hours}, minutes: ${this.minutes}]`
+		return `ModeTime [name: ${this.name}, hour: ${this.hours}, minutes: ${this.minutes}, seconds: ${this.seconds}]`
 	}
 }
 
@@ -72,9 +83,19 @@ class ModeTimes {
 		this.times[modeTime.name] = modeTime
 	}
 
+	putTimeString (modeName, timeString) {
+		let comps = timeString.split(":")	
+		const getPiece = (comps, idx) => {
+			if (idx < comps.length) return comps[idx]
+			return null
+		}
+		let modeTime = new ModeTime(modeName, getPiece(comps, 0), getPiece(comps, 1), getPiece(comps, 2))
+		this.putModeTime(modeTime)
+	}
+
 	// easiest way to add a mode and its time. ModeName should be unique.
-	put (modeName, scheduledHour, scheduledMinutes) {
-		let modeTime = new ModeTime(modeName, scheduledHour, scheduledMinutes)	
+	put (modeName, scheduledHour, scheduledMinutes, scheduledSeconds) {
+		let modeTime = new ModeTime(modeName, scheduledHour, scheduledMinutes, scheduledSeconds)	
 		this.putModeTime(modeTime)
 	}
 
@@ -102,8 +123,8 @@ class ModeTimes {
 	}
 
 	// returns the scheduled mode to be running at the specified hour (ModeTime object)
-	getModeByTime (hour, minutes) {
-		let time = new SimpleTime(hour, minutes)
+	getModeByTime (hour, minutes, seconds) {
+		let time = new SimpleTime(hour, minutes, seconds)
 		if (this.length == 0) {
 			throw new Error("Cannot get current mode using an empty ModeTimes collection.")
 		}

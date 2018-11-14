@@ -2,13 +2,14 @@ const { SimpleTime, ModeTime, ModeTimes } = require('./mode-time')
 
 describe('SimpleTime', () => {
 	test('it instantiates with right parameters', () => {
-		let st = new SimpleTime(4,3)
+		let st = new SimpleTime(4,3,43)
 		expect(st).toBeDefined()
 	})		
 
 	test('it rejects instantiation with bad parameters', () => {
 		expect(() => new SimpleTime(-1)).toThrow()
 		expect(() => new SimpleTime(1, 71)).toThrow()
+		expect(() => new SimpleTime(1, 44, 99)).toThrow()
 	})
 
 	test('compareTo()', () => {
@@ -17,6 +18,10 @@ describe('SimpleTime', () => {
 		expect(st.compareTo(st2)).toEqual(-1)
 		st.hours = 8
 		expect(st.compareTo(st2)).toEqual(1)
+
+		st = new SimpleTime(7, 30, 3)
+		st2 = new SimpleTime(7, 30, 4)
+		expect(st.compareTo(st2)).toEqual(-1)
 	})
 })
 
@@ -45,7 +50,7 @@ describe('ModeTime', () => {
 	})
 
 	test('toString()', () => {
-		let time = new ModeTime('foo', 3)
+		let time = new ModeTime('foo', 3, 2, 1)
 		expect(time.toString()).toEqual(expect.stringContaining('foo'))
 	})
 })
@@ -136,7 +141,7 @@ describe('ModeTimes', () => {
 			modeTimes = new ModeTimes()
 			modeTimes.put('foo', 3)
 			modeTimes.put('mario', 7)
-			modeTimes.put('luigi', 12, 24)
+			modeTimes.put('luigi', 12, 24, 30)
 			modeTimes.put('bar', 21, 1)
 		})
 
@@ -167,6 +172,13 @@ describe('ModeTimes', () => {
 			let mode = modeTimes.getModeByTime(12, 23)		
 			expect(mode.name).toEqual('mario')
 			mode = modeTimes.getModeByTime(12, 25)		
+			expect(mode.name).toEqual('luigi')
+		})
+
+		test('it finds the right mode with seconds precision', () => {
+			let mode = modeTimes.getModeByTime(12, 23, 22)		
+			expect(mode.name).toEqual('mario')
+			mode = modeTimes.getModeByTime(12, 24, 31)		
 			expect(mode.name).toEqual('luigi')
 		})
 
