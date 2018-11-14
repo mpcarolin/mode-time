@@ -114,14 +114,14 @@ class ModeTimes {
 		return Object.keys(this.times)
 	}
 
-	// returns all inserted ModeTimes, sorted by hour.
+	// returns all inserted ModeTimes, sorted by time.
 	getAll () {
 		return Object.values(this.times)
 			.filter(modeTime => modeTime) // remove nulls
 			.sort((a, b) => a.compareTo(b))
 	}
 
-	// returns the scheduled mode to be running at the specified hour (ModeTime object)
+	// returns the mode whose scheduled running time covers the specified time (ModeTime object)
 	getModeByTime (hour, minutes, seconds) {
 		let time = new SimpleTime(hour, minutes, seconds)
 		if (this.length == 0) {
