@@ -23,24 +23,25 @@ const { ModeTimes } = require('mode-time')
 const times = new ModeTimes()
 ```
 
-#### Then add mode times by specifying a name and an hour using 24-hour notation:
+#### Then add mode times by specifying a name and a time using 24-hour notation:
 
 ```
-times.put('light-theme', 7)  // a light theme mode, scheduled for 7:00am
-times.put('dark-theme', 13, 23)  // a dark theme mode, scheduled for 1:23pm
-times.put('sepia-theme', 23, 59) // a sepia theme mode, scheduled for 11:59pm
+times.put('light-theme', 7)  // a light theme mode, scheduled for 7:00:00am
+times.put('dark-theme', 13, 23, 44)  // a dark theme mode, scheduled for 1:23:44pm
+times.put('sepia-theme', 23, 59) // a sepia theme mode, scheduled for 11:59:00pm
+times.putTimeString('gray-theme', '10:30:38') // a gray theme scheduled for 10:30:38am
 ```
 
 * Accepted hours must range between 0 and 23, inclusive, where 0 is 12:00am and 23 is 11:00pm.
 * Accepted minutes must range between 0 and 59, inclusive
 * The ModeTimes class also provides methods for removing modes, checking if a mode exists in the collection, and more. See the class definition in mode-times.js.
 
-#### Finally, pass the hour of the day to the getModeByTime method to determine which mode to switch to:
+#### Finally, pass the time of the day to the getModeByTime method to determine which mode to switch to:
 
 ```
-// we want to find the mode whose range covers the time 2:01pm
-let mode = times.getModeByTime(14, 1) 
-// returns { 'name': 'dark-theme', 'hour': 13, 'minute':  23}
+// we want to find the mode whose range covers the time 2:01:22pm
+let mode = times.getModeByTime(14, 1, 22) 
+// returns { 'name': 'dark-theme', 'hour': 13, 'minute':  23, 'seconds': 44}
 ```
 
 #### Example use case

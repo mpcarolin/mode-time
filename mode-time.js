@@ -86,11 +86,10 @@ class ModeTimes {
 	putTimeString (modeName, timeString) {
 		let comps = timeString.split(":")	
 		const getPiece = (comps, idx) => {
-			if (idx < comps.length) return comps[idx]
+			if (idx < comps.length) return parseInt(comps[idx])
 			return null
 		}
-		let modeTime = new ModeTime(modeName, getPiece(comps, 0), getPiece(comps, 1), getPiece(comps, 2))
-		this.putModeTime(modeTime)
+		this.put(modeName, getPiece(comps, 0), getPiece(comps, 1), getPiece(comps, 2))
 	}
 
 	// easiest way to add a mode and its time. ModeName should be unique.

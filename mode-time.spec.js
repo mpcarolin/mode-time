@@ -90,6 +90,15 @@ describe('ModeTimes', () => {
 		expect(times.contains('foo')).toEqual(true)
 	})
 
+	test('putTimeString() adds a mode time using a string', () => {
+		let key = 'foo'
+		times.putTimeString(key, '10:31:11')
+		let mt = times.get(key)
+		expect(mt.hours).toEqual(10)
+		expect(mt.minutes).toEqual(31)
+		expect(mt.seconds).toEqual(11)
+	})
+
 	test('names() returns a list of the keys', () => {
 		expect(times.names()).toEqual([])
 		times.put('foo', 4)
